@@ -1,5 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+:root {
+  --dark-blue-grey: #1f2a55;
+}
+input:focus {
+  outline: none;
+}
+
 .App {
-  text-align: center;
+  height: 100vh;
 }
 
 .App-logo {

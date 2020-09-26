@@ -1,0 +1,36 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: -90px;
+  align-items: center;
+  padding: 16px;
+  justify-content: space-between;
+  border-radius: 12px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.16);
+  border: solid 0.5px #e0e7f5;
+  background-color: #ffffff;
+  font-family: Montserrat;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  align-items: center;
+  letter-spacing: normal;
+  color: var(--dark-blue-grey);
+}
+.main-profile-photo {
+  background: var(--dark-blue-grey);
+  border-radius: 50%;
+
+  height: 100px;
+  width: 100px;
+}
+.main-profile-name {
+  padding: 16px 16px 4px 16px;
+  font-size: 26px;
+  font-weight: 600;
+}
+.main-profile-bio {
+  margin-bottom: 16px;
+}

@@ -5,7 +5,13 @@
 input:focus {
   outline: none;
 }
-
+.add-flex-spaceb {
+  display: flex;
+  align-items: space-around;
+}
+input[type="password"] {
+  font-family: caption;
+}
 .App {
   height: 100vh;
 }

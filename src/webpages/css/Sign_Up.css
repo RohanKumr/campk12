@@ -70,7 +70,7 @@
   color: #838383;
   background-color: #ffcece;
 }
-.sing-up-button {
+.sign-up-button {
   margin: auto;
   width: fit-content;
   text-align: center;
@@ -78,6 +78,20 @@
   margin-top: 28px;
   border-radius: 20px;
   background-color: #2665ee;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2.46px;
+  color: #ffffff;
+}
+.sign-up-button-grey {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  padding: 12px 52px;
+  margin-top: 28px;
+  border-radius: 20px;
+  background-color: #cccccc;
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 600;
@@ -96,3 +110,17 @@
   color: #177cf4;
 }
 /* SIGN IN PAGE ENDS HERE */
+
+.input-pass {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px grey solid;
+}
+.add-flex-spaceb img {
+  height: 2rem;
+  /* margin-bottom: 30px; */
+
+  border-bottom: 1px grey solid;
+
+  color: var(--dark-blue-grey);
+}

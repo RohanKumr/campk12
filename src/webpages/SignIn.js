@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./css/Sign_In.css";
 import { useSelector, useDispatch } from "react-redux";
 // import { USER_LOGIN } from "../constants/userLoginConstants";
-import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { signin } from "../actions/userLoginActions";
 
@@ -13,11 +12,35 @@ export default function SignIn(props) {
     (state) => state.userLoginDetails.LoggedInUser
   );
 
-  const [validLoginDetails, setValidLoginDetails] = useState(true);
+  //toggles Incorrect Password error for both fields
+  const [validateUser, setValidateUser] = useState(true);
   const dispatch = useDispatch();
 
   function changeHandler(event) {
     setUser({ ...user, [event.target.name]: event.target.value });
+  }
+
+  function verifySignInDetails() {
+    //Returns the user if it exists
+    const existingUser = users.find(
+      (existingUser) =>
+        existingUser.email === user.email &&
+        existingUser.password == user.password
+    );
+
+    if (existingUser) {
+      setValidateUser(true);
+      // dispatch({ type: USER_LOGIN, payload: existingUser });
+      dispatch(signin(existingUser));
+    } else {
+      setValidateUser(false);
+    }
+  }
+
+  function keyPress(event) {
+    if (event.key === "Enter") {
+      verifySignInDetails();
+    }
   }
 
   useEffect(() => {
@@ -27,23 +50,6 @@ export default function SignIn(props) {
     return () => {};
   }, [userInfo]);
 
-  function verifySignInDetails() {
-    const existingUser = users.find(
-      (existingUser) =>
-        existingUser.email === user.email &&
-        existingUser.password == user.password
-    );
-    console.log(existingUser);
-    if (existingUser) {
-      console.log("Correct Login");
-      setValidLoginDetails(true);
-      // dispatch({ type: USER_LOGIN, payload: existingUser });
-      dispatch(signin(existingUser));
-    } else {
-      console.log("Invalid Login");
-      setValidLoginDetails(false);
-    }
-  }
   return (
     <div className="Sign-in-container">
       <div className="Sign-in-box">
@@ -53,10 +59,12 @@ export default function SignIn(props) {
         <input
           placeholder="Password"
           name="password"
+          type="password"
+          onKeyPress={keyPress}
           onChange={changeHandler}
         />
         <div className="forgot-password">Forgot Password?</div>
-        {validLoginDetails ? null : (
+        {validateUser ? null : (
           <div className="incorrect-password">Incorrect Password</div>
         )}
         <div className="sign-in-button" onClick={verifySignInDetails}>

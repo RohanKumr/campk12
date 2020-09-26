@@ -96,7 +96,8 @@
   text-align: center;
   color: var(--dark-blue-grey);
 }
-.dont-have-an-acc span {
+.dont-have-an-acc a {
+  text-decoration: none;
   font-weight: 600;
   color: #177cf4;
 }

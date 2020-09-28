@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/campk12/static/css/main.acd47882.chunk.css",
-    "main.js": "/campk12/static/js/main.0a6284e1.chunk.js",
-    "main.js.map": "/campk12/static/js/main.0a6284e1.chunk.js.map",
+    "main.css": "/campk12/static/css/main.60d9930e.chunk.css",
+    "main.js": "/campk12/static/js/main.883f0d29.chunk.js",
+    "main.js.map": "/campk12/static/js/main.883f0d29.chunk.js.map",
     "runtime-main.js": "/campk12/static/js/runtime-main.daac7c88.js",
     "runtime-main.js.map": "/campk12/static/js/runtime-main.daac7c88.js.map",
     "static/css/2.d8c3f0bf.chunk.css": "/campk12/static/css/2.d8c3f0bf.chunk.css",
     "static/js/2.4436e1e9.chunk.js": "/campk12/static/js/2.4436e1e9.chunk.js",
     "static/js/2.4436e1e9.chunk.js.map": "/campk12/static/js/2.4436e1e9.chunk.js.map",
     "index.html": "/campk12/index.html",
-    "precache-manifest.c728769882c0ea2a39caf5f1301afb1e.js": "/campk12/precache-manifest.c728769882c0ea2a39caf5f1301afb1e.js",
+    "precache-manifest.f6e2bf7b09f4b1e24dbb8a15f57a687c.js": "/campk12/precache-manifest.f6e2bf7b09f4b1e24dbb8a15f57a687c.js",
     "service-worker.js": "/campk12/service-worker.js",
     "static/css/2.d8c3f0bf.chunk.css.map": "/campk12/static/css/2.d8c3f0bf.chunk.css.map",
-    "static/css/main.acd47882.chunk.css.map": "/campk12/static/css/main.acd47882.chunk.css.map",
+    "static/css/main.60d9930e.chunk.css.map": "/campk12/static/css/main.60d9930e.chunk.css.map",
     "static/js/2.4436e1e9.chunk.js.LICENSE.txt": "/campk12/static/js/2.4436e1e9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.daac7c88.js",
     "static/css/2.d8c3f0bf.chunk.css",
     "static/js/2.4436e1e9.chunk.js",
-    "static/css/main.acd47882.chunk.css",
-    "static/js/main.0a6284e1.chunk.js"
+    "static/css/main.60d9930e.chunk.css",
+    "static/js/main.883f0d29.chunk.js"
   ]
 }

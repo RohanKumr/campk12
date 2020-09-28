@@ -31,7 +31,7 @@ export default function SignIn(props) {
       setValidateUser(false);
       return;
     }
-    if (user.password && user.password.length < 5) {
+    if (user.password && user.password.length < 4) {
       setError("Password must be 5 letters");
       setValidateUser(false);
       return;

@@ -2,8 +2,9 @@ import "./css/Feed.css";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { USER_LOGOUT } from "../constants/userLoginConstants";
-import { back_logo } from "./img/path-3.png";
 import img from "./img/path-3.png";
+import greenIcon from "./img/group-5.png";
+import coinIcon from "./img/coin@3x.png";
 
 export default function Feed(props) {
   const posts = useSelector((state) => state.postsList.posts);
@@ -11,7 +12,7 @@ export default function Feed(props) {
 
   //FEED ID FROM URL BY FEEDS
   const currentFeedId = props.match.params.feedId;
-
+  const userImage = post.image;
   //Fetch logged in user here
   const { userInfo } = useSelector(
     (state) => state.userLoginDetails.LoggedInUser
@@ -54,16 +55,25 @@ export default function Feed(props) {
         <div onClick={gotoUser} className="feed-container">
           <div className="feed">
             <div className="feeds-user-info-box">
-              <div className="profile-image"></div>
+              {/* <div className="profile-image"></div> */}
+
+              {userImage ? (
+                <img src={userImage} className="user-image" />
+              ) : (
+                <div className="profile-image"></div>
+              )}
               <div className="feeds-user-info-box-right">
                 <div>
                   <div onClick={gotoUser} className="user-name">
                     {post.name}
                   </div>
                   <div className="user-addon-info-box">
-                    <div className="user-addon-icon"></div>
+                    <img className="user-addon-icon" src={greenIcon} />
                     <div className="user-addon-info">100</div>
-                    <div className="user-addon-icon-2"></div>
+                    <div className="Oval-cont">
+                      <div className="Oval"></div>
+                    </div>
+                    <img className="user-addon-icon" src={coinIcon} />
                     <div className="user-addon-info">340</div>
                   </div>
                 </div>

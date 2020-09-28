@@ -24,6 +24,6 @@ export default function usePostSearch(query, pageNumber) {
     setHasMore(allPosts.length > 0);
     setLoading(false);
     return () => {};
-  }, [query, pageNumber]);
+  }, [query, pageNumber, allPosts]);
   return { loading, error, posts, hasMore };
 }

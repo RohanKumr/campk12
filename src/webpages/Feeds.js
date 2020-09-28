@@ -1,12 +1,15 @@
 import "./css/Feeds.css";
 import "emoji-mart/css/emoji-mart.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { USER_LOGOUT } from "../constants/userLoginConstants";
 import { addPost } from "../actions/postActions";
 import { Picker } from "emoji-mart";
 import "react-tenor/dist/styles.css";
 import Tenor from "react-tenor";
+import usePostSearch from "./customHooks/usePostSearch";
+import greenIcon from "./img/group-5.png";
+import coinIcon from "./img/coin@3x.png";
 
 export default function Feeds(props) {
   const [newPost, setNewPost] = useState("");
@@ -14,7 +17,13 @@ export default function Feeds(props) {
   const [gifPicker, setGifPicker] = useState(false);
   const [gif, setGif] = useState(null);
   const users = useSelector((state) => state.userList.users);
-  const posts = useSelector((state) => state.postsList.posts);
+
+  const [query, setQuery] = useState("");
+  const [pageNumber, setPageNumber] = useState(10);
+  const { posts, hasMore, loading, error } = usePostSearch(query, pageNumber);
+
+  const observer = useRef();
+
   const { userInfo } = useSelector(
     (state) => state.userLoginDetails.LoggedInUser
   );
@@ -30,14 +39,19 @@ export default function Feeds(props) {
 
   //SAVE AND SEND POST HERE
   function savePost() {
-    const user_id = userInfo._id;
-    const name = userInfo.name;
     let gifUrl = null;
     if (gif) {
       gifUrl = gif.media[0].tinygif.url;
-      console.log(gifUrl);
     }
-    dispatch(addPost(user_id, newPost, name, gifUrl));
+    let image = null;
+    if (userInfo.image) {
+      image = userInfo.image;
+    }
+    const user_id = userInfo._id;
+    const name = userInfo.name;
+    if (gifUrl || /\S/.test(newPost)) {
+      dispatch(addPost(user_id, newPost, name, gifUrl, image));
+    }
     setNewPost("");
     setGifPicker(false);
     setEmojiPicker(false);
@@ -67,12 +81,27 @@ export default function Feeds(props) {
     props.history.push("/user/" + user_id);
   }
 
+  const lastElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((enteries) => {
+        if (enteries[0].isIntersecting && hasMore) {
+          // console.log("Visible");
+          setPageNumber((prevPageNumber) => prevPageNumber + pageNumber);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
+
   useEffect(() => {
     if (!userInfo) {
       props.history.push("/");
     }
     return () => {};
-  }, [userInfo, addGifToTextArea]);
+  }, [userInfo, usePostSearch]);
 
   return (
     <div className="Feeds-container">
@@ -118,44 +147,109 @@ export default function Feeds(props) {
               onSelect={(emoji) => setNewPost(newPost + emoji.native + " ")}
             />
           ) : null}
-          {gifPicker ? (
-            <Tenor
-              token="2565AC6P98OU"
-              onSelect={(result) => addGifToTextArea(result)}
-            />
-          ) : null}
         </div>
-
+        {gifPicker ? (
+          <Tenor
+            token="2565AC6P98OU"
+            onSelect={(result) => addGifToTextArea(result)}
+          />
+        ) : null}
         {/* FEEDS STARTS HEREE */}
-        {posts.map((post) => (
-          <div className="feeds" onClick={() => gotoFeed(post.id)}>
-            <div className="feeds-user-info-box">
-              <div className="profile-image"></div>
-              <div className="feeds-user-info-box-right">
-                <div>
-                  <div
-                    onClick={() => gotoUser(post.user_id)}
-                    className="user-name">
-                    {post.name}
-                  </div>
-                  <div className="user-addon-info-box">
-                    <div className="user-addon-icon"></div>
-                    <div className="user-addon-info">100</div>
-                    <div className="user-addon-icon-2"></div>
-                    <div className="user-addon-info">340</div>
+        {posts.map((post, index) => {
+          if (posts.length === index + 1) {
+            return (
+              <div
+                key={post.id}
+                ref={lastElementRef}
+                className="feeds"
+                onClick={() => gotoFeed(post.id)}>
+                <div className="feeds-user-info-box">
+                  {post.image ? (
+                    <img src={post.image} className="user-image" />
+                  ) : (
+                    <div className="profile-image"></div>
+                  )}
+
+                  <div className="feeds-user-info-box-right">
+                    <div>
+                      <div
+                        onClick={() => gotoUser(post.user_id)}
+                        className="user-name">
+                        {post.name}
+                      </div>
+                      <div className="user-addon-info-box">
+                        <div className="user-addon-icon"></div>
+                        <div className="user-addon-info">100</div>
+                        <div className="user-addon-icon-2"></div>
+                        <div className="user-addon-info">340</div>
+                      </div>
+                    </div>
+                    <div className="post-time">5h</div>
                   </div>
                 </div>
-                <div className="post-time">5h</div>
+                <div className="feeds-text">{post.post}</div>
+                <div>
+                  {post.gif && (
+                    <img
+                      className="gif-image"
+                      src={post.gif}
+                      alt="Selected GIF"
+                    />
+                  )}
+                </div>
+              </div>
+            );
+          }
+          return (
+            <div
+              key={post.id}
+              className="feeds"
+              onClick={() => gotoFeed(post.id)}>
+              <div className="feeds-user-info-box">
+                {/* <div className="profile-image"></div> */}
+                {post.image ? (
+                  <img
+                    // src="https://cdn.pixabay.com/photo/2020/09/22/18/55/avatar-5594052_960_720.png"
+                    src={post.image}
+                    className="user-image"
+                  />
+                ) : (
+                  <div className="profile-image"></div>
+                )}
+                <div className="feeds-user-info-box-right">
+                  <div>
+                    <div
+                      onClick={() => gotoUser(post.user_id)}
+                      className="user-name">
+                      {post.name}
+                    </div>
+                    <div className="user-addon-info-box">
+                      <img className="user-addon-icon" src={greenIcon} />
+                      <div className="user-addon-info">100</div>
+                      <div className="Oval-cont">
+                        <div className="Oval"></div>
+                      </div>
+                      <img className="user-addon-icon" src={coinIcon} />
+                      <div className="user-addon-info">340</div>
+                    </div>
+                  </div>
+                  <div className="post-time">5h</div>
+                </div>
+              </div>
+              <div className="feeds-text">{post.post}</div>
+              <div>
+                {post.gif && (
+                  <img
+                    className="gif-image"
+                    src={post.gif}
+                    alt="Selected GIF"
+                  />
+                )}
               </div>
             </div>
-            <div className="feeds-text">{post.post}</div>
-            <div>
-              {post.gif && (
-                <img className="gif-image" src={post.gif} alt="Selected GIF" />
-              )}
-            </div>
-          </div>
-        ))}
+          );
+        })}
+        <div>{loading && "Loading..."}</div>
       </div>
     </div>
   );

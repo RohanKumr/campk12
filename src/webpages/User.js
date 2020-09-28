@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { USER_LOGOUT } from "../constants/userLoginConstants";
 import img from "./img/path-3.png";
 import "./css/profile.css";
+import greenIcon from "./img/group-5.png";
+import coinIcon from "./img/coin@3x.png";
 
 export default function User(props) {
   let userID = props.match.params.userId;
@@ -42,12 +44,20 @@ export default function User(props) {
           </div>
         </div>
         <div className="profile-container">
-          <div className="main-profile-photo"></div>
+          {/* <div className="main-profile-photo"></div> */}
+          {currentUserPosts[0].image ? (
+            <img src={currentUserPosts[0].image} className="main-user-photo" />
+          ) : (
+            <div className="main-profile-photo"></div>
+          )}
           <div className="main-profile-name">{currentUserPosts[0].name}</div>
           <div className="user-addon-info-box">
-            <div className="user-addon-icon"></div>
+            <img className="user-addon-icon" src={greenIcon} />
             <div className="user-addon-info">100</div>
-            <div className="user-addon-icon-2"></div>
+            <div className="Oval-cont">
+              <div className="Oval"></div>
+            </div>
+            <img className="user-addon-icon" src={coinIcon} />
             <div className="user-addon-info">340</div>
           </div>
         </div>
@@ -55,18 +65,26 @@ export default function User(props) {
         {/* FEED STARTS HERE */}
         {currentUserPosts.map((post) => (
           <div
+            key={post.id}
             className="feeds"
             //   onClick={() => gotoFeed(post.id)}
           >
             <div className="feeds-user-info-box">
-              <div className="profile-image"></div>
+              {currentUserPosts[0].image ? (
+                <img src={currentUserPosts[0].image} className="user-image" />
+              ) : (
+                <div className="profile-image"></div>
+              )}
               <div className="feeds-user-info-box-right">
                 <div>
                   <div className="user-name">{post.name}</div>
                   <div className="user-addon-info-box">
-                    <div className="user-addon-icon"></div>
+                    <img className="user-addon-icon" src={greenIcon} />
                     <div className="user-addon-info">100</div>
-                    <div className="user-addon-icon-2"></div>
+                    <div className="Oval-cont">
+                      <div className="Oval"></div>
+                    </div>
+                    <img className="user-addon-icon" src={coinIcon} />
                     <div className="user-addon-info">340</div>
                   </div>
                 </div>

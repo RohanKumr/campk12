@@ -72,7 +72,8 @@
   font-size: 16px;
 }
 .input-with-image img {
-  height: 1.5rem;
+  /* height: 1.5rem; */
+  height: 10px;
   cursor: pointer;
   color: var(--dark-blue-grey);
 }
@@ -98,21 +99,6 @@
   color: #838383;
   background-color: #ffcece;
 }
-/* .sign-up-button {
-  margin: auto;
-  width: fit-content;
-  text-align: center;
-  padding: 12px 52px;
-  margin-top: 28px;
-  border-radius: 20px;
-  background-color: #2665ee;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 2.46px;
-  color: #ffffff;
-  cursor: pointer;
-} */
 .signup-button {
   display: block;
   border: transparent;

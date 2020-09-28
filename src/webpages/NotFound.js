@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
-import "./css/Feeds.css";
-import { useSelector } from "react-redux";
 import usePostSearch from "./customHooks/usePostSearch";
+// import { Link } from "react-router-dom";
+// import "./css/Feeds.css";
+// import { useSelector } from "react-redux";
 
 export default function NotFound() {
   //const posts = useSelector((state) => state.postsList.posts);
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(10);
-  const { posts, hasMore, loading, error } = usePostSearch(query, pageNumber);
+  const { posts, hasMore, loading, newPost } = usePostSearch(query, pageNumber);
 
   const observer = useRef();
   const lastElementRef = useCallback(
@@ -21,13 +21,10 @@ export default function NotFound() {
           setPageNumber((prevPageNumber) => prevPageNumber + pageNumber);
         }
       });
-
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [loading, hasMore, newPost]
   );
-
-  function loadMe() {}
 
   return (
     <div>

@@ -11,6 +11,7 @@ function postsListReducer(state = { posts: data.posts }, action) {
         post: action.payload.newPost,
         name: action.payload.name,
         gif: action.payload.gifUrl,
+        image: action.payload.image,
       };
       console.log("action reached");
       return { ...state, posts: [newPost, ...state.posts] };

@@ -20,7 +20,7 @@ export default function SignIn(props) {
       props.history.push("/feeds/" + userInfo._id);
     }
     return () => {};
-  }, [userInfo]);
+  }, [userInfo, props]);
 
   const dispatch = useDispatch();
 
@@ -45,7 +45,7 @@ export default function SignIn(props) {
     const existingUser = users.find(
       (existingUser) =>
         existingUser.email === user.email &&
-        existingUser.password == user.password
+        existingUser.password === user.password
     );
     //Returns the user if it exists
     if (existingUser) {

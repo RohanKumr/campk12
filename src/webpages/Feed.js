@@ -8,10 +8,10 @@ import coinIcon from "./img/coin@3x.png";
 
 export default function Feed(props) {
   const posts = useSelector((state) => state.postsList.posts);
-  const post = posts.find((post) => post.id == props.match.params.feedId);
+  const post = posts.find((post) => post.id === props.match.params.feedId);
 
   //FEED ID FROM URL BY FEEDS
-  const currentFeedId = props.match.params.feedId;
+  // const currentFeedId = props.match.params.feedId;
   const userImage = post.image;
   //Fetch logged in user here
   const { userInfo } = useSelector(
@@ -24,11 +24,12 @@ export default function Feed(props) {
       props.history.push("/");
     }
     return () => {};
-  }, [userInfo]);
+  }, [userInfo, props]);
 
   function logoutButton() {
     dispatch({ type: USER_LOGOUT });
   }
+
   function back() {
     props.history.push("/feeds");
   }
@@ -44,7 +45,7 @@ export default function Feed(props) {
         <div className="blue-background">
           <div className="your-feeds">
             <div className="feed-item-box">
-              <img onClick={back} className="Path-3" src={img} />
+              <img alt="" onClick={back} className="Path-3" src={img} />
               <div>Feed Item</div>
             </div>
             <span className="feeds-logout" onClick={logoutButton}>
@@ -58,7 +59,7 @@ export default function Feed(props) {
               {/* <div className="profile-image"></div> */}
 
               {userImage ? (
-                <img src={userImage} className="user-image" />
+                <img alt="" src={userImage} className="user-image" />
               ) : (
                 <div className="profile-image"></div>
               )}
@@ -68,12 +69,12 @@ export default function Feed(props) {
                     {post.name}
                   </div>
                   <div className="user-addon-info-box">
-                    <img className="user-addon-icon" src={greenIcon} />
+                    <img alt="" className="user-addon-icon" src={greenIcon} />
                     <div className="user-addon-info">100</div>
                     <div className="Oval-cont">
                       <div className="Oval"></div>
                     </div>
-                    <img className="user-addon-icon" src={coinIcon} />
+                    <img alt="" className="user-addon-icon" src={coinIcon} />
                     <div className="user-addon-info">340</div>
                   </div>
                 </div>
@@ -81,7 +82,7 @@ export default function Feed(props) {
               </div>
             </div>
             <div className="feeds-text">{post.post}</div>
-            <div>{post.gif && <img src={post.gif} alt="Selected GIF" />}</div>
+            <div>{post.gif && <img alt="" src={post.gif} />}</div>
           </div>
         </div>
       </div>

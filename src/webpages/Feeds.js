@@ -16,11 +16,10 @@ export default function Feeds(props) {
   const [emojiPicker, setEmojiPicker] = useState(false);
   const [gifPicker, setGifPicker] = useState(false);
   const [gif, setGif] = useState(null);
-  const users = useSelector((state) => state.userList.users);
 
-  const [query, setQuery] = useState("");
+  const [query] = useState("");
   const [pageNumber, setPageNumber] = useState(10);
-  const { posts, hasMore, loading, error } = usePostSearch(query, pageNumber);
+  const { posts, hasMore, loading } = usePostSearch(query, pageNumber);
 
   const observer = useRef();
 
@@ -93,7 +92,7 @@ export default function Feeds(props) {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [loading, hasMore, pageNumber]
   );
 
   useEffect(() => {
@@ -101,7 +100,7 @@ export default function Feeds(props) {
       props.history.push("/");
     }
     return () => {};
-  }, [userInfo, usePostSearch]);
+  }, [userInfo, props]);
 
   return (
     <div className="Feeds-container">
@@ -120,7 +119,7 @@ export default function Feeds(props) {
             className="post-textarea"
             // contentEditable="true"
           >
-            {gif && <img src={gif.media[0].tinygif.url} alt="Selected GIF" />}
+            {gif && <img alt="" src={gif.media[0].tinygif.url} />}
             <textarea
               className="write-feed-here"
               value={newPost}
@@ -134,7 +133,9 @@ export default function Feeds(props) {
             POST
           </div>
           <div className="emoji-button" onClick={toggleEmojiPicker}>
-            &#128515;
+            <span role="img" aria-label="happy-emoji">
+              &#128515;
+            </span>
           </div>
           <div className="gif-button" onClick={toggleGifPicker}>
             GIF
@@ -165,7 +166,7 @@ export default function Feeds(props) {
                 onClick={() => gotoFeed(post.id)}>
                 <div className="feeds-user-info-box">
                   {post.image ? (
-                    <img src={post.image} className="user-image" />
+                    <img alt="" src={post.image} className="user-image" />
                   ) : (
                     <div className="profile-image"></div>
                   )}
@@ -190,11 +191,7 @@ export default function Feeds(props) {
                 <div className="feeds-text">{post.post}</div>
                 <div>
                   {post.gif && (
-                    <img
-                      className="gif-image"
-                      src={post.gif}
-                      alt="Selected GIF"
-                    />
+                    <img className="gif-image" src={post.gif} alt="" />
                   )}
                 </div>
               </div>
@@ -209,6 +206,7 @@ export default function Feeds(props) {
                 {/* <div className="profile-image"></div> */}
                 {post.image ? (
                   <img
+                    alt=""
                     // src="https://cdn.pixabay.com/photo/2020/09/22/18/55/avatar-5594052_960_720.png"
                     src={post.image}
                     className="user-image"
@@ -224,12 +222,12 @@ export default function Feeds(props) {
                       {post.name}
                     </div>
                     <div className="user-addon-info-box">
-                      <img className="user-addon-icon" src={greenIcon} />
+                      <img alt="" className="user-addon-icon" src={greenIcon} />
                       <div className="user-addon-info">100</div>
                       <div className="Oval-cont">
                         <div className="Oval"></div>
                       </div>
-                      <img className="user-addon-icon" src={coinIcon} />
+                      <img alt="" className="user-addon-icon" src={coinIcon} />
                       <div className="user-addon-info">340</div>
                     </div>
                   </div>
@@ -239,11 +237,7 @@ export default function Feeds(props) {
               <div className="feeds-text">{post.post}</div>
               <div>
                 {post.gif && (
-                  <img
-                    className="gif-image"
-                    src={post.gif}
-                    alt="Selected GIF"
-                  />
+                  <img className="gif-image" src={post.gif} alt="" />
                 )}
               </div>
             </div>

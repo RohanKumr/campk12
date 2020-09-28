@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import data from "../../data";
+
 export default function usePostSearch(query, pageNumber) {
   const allPosts = useSelector((state) => state.postsList.posts);
   const [loading, setLoading] = useState(true);

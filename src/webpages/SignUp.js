@@ -1,5 +1,5 @@
 import "./css/Sign_Up.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userActions } from "../actions/userActions";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import hiddenPass from "./img/password-hidden@3x.png";
 
 export default function SignUp(props) {
   const [user, setUser] = useState({});
-  const [userExists, setUserExists] = useState(false);
+
   const [buttonGrey, setButtonGrey] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
@@ -20,7 +20,7 @@ export default function SignUp(props) {
   function changeHandler(event) {
     setUser({ ...user, [event.target.name]: event.target.value });
 
-    if (Object.keys(user).length == 4) {
+    if (Object.keys(user).length === 4) {
       setButtonGrey(false);
     } else {
       setButtonGrey(true);
@@ -45,17 +45,14 @@ export default function SignUp(props) {
       setValidateUser(false);
       return;
     } else {
-      console.log("SEnding data");
       const existingUser = users.find(
         (existingUser) => existingUser.email === user.email
       );
       if (existingUser) {
-        setUserExists(true);
-        setError("Opps User Exists");
+        setError("Oops User Exists");
       } else {
         dispatch(userActions(user));
         props.history.push("/");
-        setUserExists(false);
       }
     }
   }
@@ -83,7 +80,7 @@ export default function SignUp(props) {
             name="password"
             onChange={changeHandler}
           />
-          <img onClick={showPassword} src={hiddenPass} />
+          <img alt="" onClick={showPassword} src={hiddenPass} />
         </div>
 
         <div className="input-with-image">
@@ -93,7 +90,7 @@ export default function SignUp(props) {
             name="confirmPassword"
             onChange={changeHandler}
           />
-          <img onClick={showPassword} src={hiddenPass} />
+          <img alt="" onClick={showPassword} src={hiddenPass} />
         </div>
 
         <input

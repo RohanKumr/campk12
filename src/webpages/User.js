@@ -27,15 +27,17 @@ export default function User(props) {
     if (!userInfo) {
       props.history.push("/");
     }
-    return () => {};
-  }, [userInfo]);
+    return () => {
+      props.history.push("/");
+    };
+  }, [userInfo, props]);
   return (
     <div className="Feeds-container">
       <div className="Feeds-box">
         <div className="blue-background">
           <div className="your-feeds">
             <div className="feed-item-box">
-              <img onClick={back} className="Path-3" src={img} />
+              <img alt="" onClick={back} className="Path-3" src={img} />
               <div>Profile</div>
             </div>
             <span className="feeds-logout" onClick={logoutButton}>
@@ -46,18 +48,22 @@ export default function User(props) {
         <div className="profile-container">
           {/* <div className="main-profile-photo"></div> */}
           {currentUserPosts[0].image ? (
-            <img src={currentUserPosts[0].image} className="main-user-photo" />
+            <img
+              alt=""
+              src={currentUserPosts[0].image}
+              className="main-user-photo"
+            />
           ) : (
             <div className="main-profile-photo"></div>
           )}
           <div className="main-profile-name">{currentUserPosts[0].name}</div>
           <div className="user-addon-info-box">
-            <img className="user-addon-icon" src={greenIcon} />
+            <img alt="" className="user-addon-icon" src={greenIcon} />
             <div className="user-addon-info">100</div>
             <div className="Oval-cont">
               <div className="Oval"></div>
             </div>
-            <img className="user-addon-icon" src={coinIcon} />
+            <img alt="" className="user-addon-icon" src={coinIcon} />
             <div className="user-addon-info">340</div>
           </div>
         </div>
@@ -71,7 +77,11 @@ export default function User(props) {
           >
             <div className="feeds-user-info-box">
               {currentUserPosts[0].image ? (
-                <img src={currentUserPosts[0].image} className="user-image" />
+                <img
+                  alt=""
+                  src={currentUserPosts[0].image}
+                  className="user-image"
+                />
               ) : (
                 <div className="profile-image"></div>
               )}
@@ -79,12 +89,12 @@ export default function User(props) {
                 <div>
                   <div className="user-name">{post.name}</div>
                   <div className="user-addon-info-box">
-                    <img className="user-addon-icon" src={greenIcon} />
+                    <img alt="" className="user-addon-icon" src={greenIcon} />
                     <div className="user-addon-info">100</div>
                     <div className="Oval-cont">
                       <div className="Oval"></div>
                     </div>
-                    <img className="user-addon-icon" src={coinIcon} />
+                    <img alt="" className="user-addon-icon" src={coinIcon} />
                     <div className="user-addon-info">340</div>
                   </div>
                 </div>
@@ -94,9 +104,7 @@ export default function User(props) {
             <div className="feeds-text">{post.post}</div>
 
             <div>
-              {post.gif && (
-                <img className="gif-image" src={post.gif} alt="Selected GIF" />
-              )}
+              {post.gif && <img alt="" className="gif-image" src={post.gif} />}
             </div>
           </div>
         ))}

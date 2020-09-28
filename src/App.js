@@ -14,14 +14,12 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {/* <Route path="/sign-in" component={SignIn} exact /> */}
           <Route path="/" component={SignIn} exact />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/feeds" component={Feeds} />
           <Route path="/feed/:feedId" component={Feed} />
           <Route path="/user/:userId" component={User} />
           <Route component={NotFound} />
-          {/* <Route path="/" component={User} /> */}
         </Switch>
       </Router>
     </div>

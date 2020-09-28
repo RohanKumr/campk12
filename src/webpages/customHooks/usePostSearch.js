@@ -17,10 +17,6 @@ export default function usePostSearch(query, pageNumber) {
     setLoading(true);
     setError(false);
     setPosts(allPosts.filter((p, i) => i < pageNumber));
-    // setPosts((prevPosts) => {
-    //   return [...prevPosts, allPosts.map((p, i) => p)];
-    // });
-
     setHasMore(allPosts.length > 0);
     setLoading(false);
     return () => {};

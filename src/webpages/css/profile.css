@@ -20,7 +20,7 @@
   color: var(--dark-blue-grey);
 }
 .main-profile-photo {
-  background: var(--dark-blue-grey);
+  background: black;
   border-radius: 50%;
 
   height: 100px;

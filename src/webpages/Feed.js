@@ -10,8 +10,6 @@ export default function Feed(props) {
   const posts = useSelector((state) => state.postsList.posts);
   const post = posts.find((post) => post.id === props.match.params.feedId);
 
-  //FEED ID FROM URL BY FEEDS
-  // const currentFeedId = props.match.params.feedId;
   const userImage = post.image;
   //Fetch logged in user here
   const { userInfo } = useSelector(
@@ -56,8 +54,6 @@ export default function Feed(props) {
         <div onClick={gotoUser} className="feed-container">
           <div className="feed">
             <div className="feeds-user-info-box">
-              {/* <div className="profile-image"></div> */}
-
               {userImage ? (
                 <img alt="" src={userImage} className="user-image" />
               ) : (

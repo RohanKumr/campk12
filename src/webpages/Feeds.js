@@ -203,14 +203,8 @@ export default function Feeds(props) {
               className="feeds"
               onClick={() => gotoFeed(post.id)}>
               <div className="feeds-user-info-box">
-                {/* <div className="profile-image"></div> */}
                 {post.image ? (
-                  <img
-                    alt=""
-                    // src="https://cdn.pixabay.com/photo/2020/09/22/18/55/avatar-5594052_960_720.png"
-                    src={post.image}
-                    className="user-image"
-                  />
+                  <img alt="" src={post.image} className="user-image" />
                 ) : (
                   <div className="profile-image"></div>
                 )}

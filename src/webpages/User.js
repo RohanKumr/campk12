@@ -46,7 +46,6 @@ export default function User(props) {
           </div>
         </div>
         <div className="profile-container">
-          {/* <div className="main-profile-photo"></div> */}
           {currentUserPosts[0].image ? (
             <img
               alt=""
@@ -70,11 +69,7 @@ export default function User(props) {
 
         {/* FEED STARTS HERE */}
         {currentUserPosts.map((post) => (
-          <div
-            key={post.id}
-            className="feeds"
-            //   onClick={() => gotoFeed(post.id)}
-          >
+          <div key={post.id} className="feeds">
             <div className="feeds-user-info-box">
               {currentUserPosts[0].image ? (
                 <img

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./css/Sign_In.css";
 import { useSelector, useDispatch } from "react-redux";
-// import { USER_LOGIN } from "../constants/userLoginConstants";
 import { Link } from "react-router-dom";
 import { signin } from "../actions/userLoginActions";
 

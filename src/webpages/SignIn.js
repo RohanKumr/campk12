@@ -7,48 +7,61 @@ import { signin } from "../actions/userLoginActions";
 
 export default function SignIn(props) {
   const [user, setUser] = useState({});
+  const [error, setError] = useState("");
+  //toggles Incorrect Password error for both fields
+  const [validateUser, setValidateUser] = useState(true);
   const users = useSelector((state) => state.userList.users);
   const { userInfo } = useSelector(
     (state) => state.userLoginDetails.LoggedInUser
   );
 
-  //toggles Incorrect Password error for both fields
-  const [validateUser, setValidateUser] = useState(true);
+  useEffect(() => {
+    if (userInfo) {
+      props.history.push("/feeds/" + userInfo._id);
+    }
+    return () => {};
+  }, [userInfo]);
+
   const dispatch = useDispatch();
 
   function changeHandler(event) {
     setUser({ ...user, [event.target.name]: event.target.value });
+    if (user.email && !user.email.includes("@")) {
+      setError("Incorrect Email");
+      setValidateUser(false);
+      return;
+    }
+    if (user.password && user.password.length < 5) {
+      setError("Password must be 5 letters");
+      setValidateUser(false);
+      return;
+    }
+
+    if (user.email && user.email.includes("@")) setValidateUser(true);
+    if (user.password && user.password.length > 6) setValidateUser(true);
   }
 
   function verifySignInDetails() {
-    //Returns the user if it exists
     const existingUser = users.find(
       (existingUser) =>
         existingUser.email === user.email &&
         existingUser.password == user.password
     );
-
+    //Returns the user if it exists
     if (existingUser) {
       setValidateUser(true);
       // dispatch({ type: USER_LOGIN, payload: existingUser });
       dispatch(signin(existingUser));
     } else {
       setValidateUser(false);
+      setError("Incorrect Username Or Password");
     }
   }
-
   function keyPress(event) {
     if (event.key === "Enter") {
       verifySignInDetails();
     }
   }
-
-  useEffect(() => {
-    if (userInfo) {
-      props.history.push("/feeds");
-    }
-    return () => {};
-  }, [userInfo]);
 
   return (
     <div className="Sign-in-container">
@@ -65,7 +78,7 @@ export default function SignIn(props) {
         />
         <div className="forgot-password">Forgot Password?</div>
         {validateUser ? null : (
-          <div className="incorrect-password">Incorrect Password</div>
+          <div className="incorrect-password">{error}</div>
         )}
         <div className="sign-in-button" onClick={verifySignInDetails}>
           SIGN IN

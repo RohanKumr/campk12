@@ -51,7 +51,7 @@ export default function Feed(props) {
             </span>
           </div>
         </div>
-        <div className="feed-container">
+        <div onClick={gotoUser} className="feed-container">
           <div className="feed">
             <div className="feeds-user-info-box">
               <div className="profile-image"></div>

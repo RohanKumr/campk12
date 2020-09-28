@@ -44,7 +44,6 @@ export default function User(props) {
         <div className="profile-container">
           <div className="main-profile-photo"></div>
           <div className="main-profile-name">{currentUserPosts[0].name}</div>
-          {/* <div className="main-profile-bio">THIS IS A DEFAULT BIO</div> */}
           <div className="user-addon-info-box">
             <div className="user-addon-icon"></div>
             <div className="user-addon-info">100</div>

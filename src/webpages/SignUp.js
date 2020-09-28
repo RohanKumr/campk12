@@ -11,6 +11,10 @@ export default function SignUp(props) {
   const [user, setUser] = useState({});
   const [userExists, setUserExists] = useState(false);
   const [buttonGrey, setButtonGrey] = useState(true);
+  const [error, setError] = useState("");
+  //toggles Incorrect Password error for both fields
+  const [validateUser, setValidateUser] = useState(true);
+
   const users = useSelector((state) => state.userList.users);
   const dispatch = useDispatch();
 
@@ -25,15 +29,58 @@ export default function SignUp(props) {
   }
 
   function verifySignInDetails() {
-    const existingUser = users.find(
-      (existingUser) => existingUser.email === user.email
-    );
-    if (existingUser) {
-      setUserExists(true);
+    // if (user.email && !user.email.includes("@")) {
+    //   setError("Incorrect Email");
+    //   setValidateUser(false);
+    //   return;
+    // }
+    // console.log("i can read this");
+    // if (user.password && user.password.length < 5) {
+    //   setError("Password must be more than 5 letters");
+    //   setValidateUser(false);
+    //   return;
+    // }
+    // if (user.confirmPassword && user.confirmPassword !== user.password) {
+    //   setError("Passwords dont match!");
+    //   setValidateUser(false);
+    //   return;
+    // }
+    // if (user.name && user.name.length <= 6) {
+    //   setError("Provide full name!");
+    //   setValidateUser(false);
+
+    //   return;
+    // }
+
+    if (user.email && !user.email.includes("@")) {
+      setError("Incorrect Email");
+      setValidateUser(false);
+      return;
+    } else if (user.password && user.password.length < 5) {
+      setError("Password must be more than 5 letters");
+      setValidateUser(false);
+      return;
+    } else if (user.confirmPassword && user.confirmPassword !== user.password) {
+      setError("Passwords dont match!");
+      setValidateUser(false);
+      return;
+    } else if (user.name && user.name.length <= 6) {
+      setError("Provide full name!");
+      setValidateUser(false);
+      return;
     } else {
-      dispatch(userActions(user));
-      props.history.push("/");
-      setUserExists(false);
+      console.log("SEnding data");
+      const existingUser = users.find(
+        (existingUser) => existingUser.email === user.email
+      );
+      if (existingUser) {
+        setUserExists(true);
+        setError("Opps User Exists");
+      } else {
+        dispatch(userActions(user));
+        props.history.push("/");
+        setUserExists(false);
+      }
     }
   }
   return (
@@ -41,14 +88,24 @@ export default function SignUp(props) {
       <div className="Sign-up-box">
         <div className="sign-up">Sign up</div>
         <div className="welcome-back">Create Account for Camp K12</div>
-        <input placeholder="Email" name="email" onChange={changeHandler} />
         <input
-          type="password"
-          placeholder="Password"
-          name="password"
+          className="input-without-image"
+          placeholder="Email"
+          name="email"
           onChange={changeHandler}
         />
-        <div className="add-flex-spaceb">
+
+        <div className="input-with-image">
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            onChange={changeHandler}
+          />
+          <img src={hiddenPass} />
+        </div>
+
+        <div className="input-with-image">
           <input
             type="password"
             placeholder="Confirm Password"
@@ -58,19 +115,26 @@ export default function SignUp(props) {
           <img src={hiddenPass} />
         </div>
 
-        <input placeholder="Full Name" name="name" onChange={changeHandler} />
-        {userExists ? (
-          <div className="account-exists">
-            Oops, account with this email already exists! Try again with
-            different email
-          </div>
-        ) : null}
-        <div
+        <input
+          className="input-without-image"
+          placeholder="Full Name"
+          name="name"
+          onChange={changeHandler}
+        />
+        {validateUser ? null : <div className="account-exists">{error}</div>}
+        {/* <div
           className={buttonGrey ? "sign-up-button-grey" : "sign-up-button"}
           onClick={verifySignInDetails}
-          disabled>
+          // disabled={true}
+        >
           SIGN UP
-        </div>
+        </div> */}
+        <button
+          className={buttonGrey ? "signup-button-grey" : "signup-button"}
+          onClick={verifySignInDetails}
+          disabled={buttonGrey}>
+          SIGN UP
+        </button>
         <div className="dont-have-an-acc">
           Already have an account? <Link to="/">Sign In</Link>
         </div>

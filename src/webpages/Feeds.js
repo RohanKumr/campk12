@@ -5,11 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { USER_LOGOUT } from "../constants/userLoginConstants";
 import { addPost } from "../actions/postActions";
 import { Picker } from "emoji-mart";
-//GIPHY
-// import GiphySelect from "react-giphy-select";
-// import "react-giphy-select/lib/styles.css";
-
-//TENOR
 import "react-tenor/dist/styles.css";
 import Tenor from "react-tenor";
 
@@ -42,8 +37,8 @@ export default function Feeds(props) {
       gifUrl = gif.media[0].tinygif.url;
       console.log(gifUrl);
     }
-    dispatch(addPost(newPost, user_id, name, gifUrl));
-    setNewPost("Write another post..");
+    dispatch(addPost(user_id, newPost, name, gifUrl));
+    setNewPost("");
     setGifPicker(false);
     setEmojiPicker(false);
     setGif(null);
@@ -66,13 +61,12 @@ export default function Feeds(props) {
   //ADD TO TEXT AREA
   function addGifToTextArea(selectedGif) {
     setGif(selectedGif);
-    if (newPost === "Write a post...") {
-      setNewPost("");
-    }
-    if (newPost === "Write another post..") {
-      setNewPost("");
-    }
   }
+
+  function gotoUser(user_id) {
+    props.history.push("/user/" + user_id);
+  }
+
   useEffect(() => {
     if (!userInfo) {
       props.history.push("/");
@@ -139,7 +133,11 @@ export default function Feeds(props) {
               <div className="profile-image"></div>
               <div className="feeds-user-info-box-right">
                 <div>
-                  <div className="user-name">{post.name}</div>
+                  <div
+                    onClick={() => gotoUser(post.user_id)}
+                    className="user-name">
+                    {post.name}
+                  </div>
                   <div className="user-addon-info-box">
                     <div className="user-addon-icon"></div>
                     <div className="user-addon-info">100</div>

@@ -35,7 +35,8 @@
   font-size: 16px;
   color: var(--dark-blue-grey);
 }
-.Sign-up-box input {
+.input-without-image {
+  background: transparent;
   box-sizing: border-box;
   width: 100%;
   height: 2rem;
@@ -46,6 +47,33 @@
   opacity: 0.9;
   font-family: Montserrat;
   font-size: 16px;
+  color: var(--dark-blue-grey);
+}
+.input-with-image {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px grey solid;
+  opacity: 0.9;
+  font-family: Montserrat;
+  font-size: 16px;
+  color: var(--dark-blue-grey);
+}
+.input-with-image input {
+  background: transparent;
+  padding: 20px 0 20px 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2rem;
+  border: none;
+  font-family: Montserrat;
+  font-size: 16px;
+}
+.input-with-image img {
+  height: 1.5rem;
+  cursor: pointer;
   color: var(--dark-blue-grey);
 }
 .forgot-password {
@@ -70,7 +98,7 @@
   color: #838383;
   background-color: #ffcece;
 }
-.sign-up-button {
+/* .sign-up-button {
   margin: auto;
   width: fit-content;
   text-align: center;
@@ -83,8 +111,49 @@
   font-weight: 600;
   letter-spacing: 2.46px;
   color: #ffffff;
+  cursor: pointer;
+} */
+.signup-button {
+  display: block;
+  border: transparent;
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  padding: 12px 52px;
+  margin-top: 28px;
+  border-radius: 20px;
+  background-color: #2665ee;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2.46px;
+  color: #ffffff;
+  cursor: pointer;
 }
-.sign-up-button-grey {
+.signup-button:hover {
+  opacity: 0.96;
+}
+.signup-button:focus {
+  outline: none;
+}
+/* .sign-up-button-grey {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  padding: 12px 52px;
+  margin-top: 28px;
+  border-radius: 20px;
+  background-color: #cccccc;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2.46px;
+  color: #ffffff;
+} */
+.signup-button-grey {
+  outline: none;
+  border: transparent;
+  display: block;
   margin: auto;
   width: fit-content;
   text-align: center;
@@ -115,12 +184,4 @@
   display: flex;
   align-items: center;
   border-bottom: 1px grey solid;
-}
-.add-flex-spaceb img {
-  height: 2rem;
-  /* margin-bottom: 30px; */
-
-  border-bottom: 1px grey solid;
-
-  color: var(--dark-blue-grey);
 }

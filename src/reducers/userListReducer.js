@@ -5,9 +5,14 @@ import { v4 as uuidv4 } from "uuid";
 function userListReducer(state = { users: data.users }, action) {
   switch (action.type) {
     case ADD_USER:
+      let lowerCasedUser;
+      if (action.payload.email) {
+        lowerCasedUser = action.payload.email.toLowerCase();
+      }
+
       const newUser = {
         _id: uuidv4(),
-        email: action.payload.email,
+        email: lowerCasedUser,
         name: action.payload.name,
         password: action.payload.password,
       };

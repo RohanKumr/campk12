@@ -18,7 +18,7 @@ export default function SignUp(props) {
   const dispatch = useDispatch();
 
   function changeHandler(event) {
-    setUser({ ...user, [event.target.name]: event.target.value });
+    setUser({ ...user, [event.target.name]: event.target.value.toString() });
 
     if (Object.keys(user).length === 4) {
       setButtonGrey(false);
@@ -52,7 +52,7 @@ export default function SignUp(props) {
         setError("Oops User Exists");
       } else {
         dispatch(userActions(user));
-        props.history.push("/");
+        props.history.push("/campk12");
       }
     }
   }
@@ -107,7 +107,7 @@ export default function SignUp(props) {
           SIGN UP
         </button>
         <div className="dont-have-an-acc">
-          Already have an account? <Link to="/">Sign In</Link>
+          Already have an account? <Link to="/campk12">Sign In</Link>
         </div>
       </div>
     </div>

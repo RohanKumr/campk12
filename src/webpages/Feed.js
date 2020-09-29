@@ -19,7 +19,7 @@ export default function Feed(props) {
 
   useEffect(() => {
     if (!userInfo) {
-      props.history.push("/");
+      props.history.push("/campk12");
     }
     return () => {};
   }, [userInfo, props]);

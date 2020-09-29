@@ -11,7 +11,9 @@ export default function User(props) {
 
   const posts = useSelector((state) => state.postsList.posts);
   const dispatch = useDispatch();
-  const currentUserPosts = posts.filter((post) => post.user_id == userID);
+  const currentUserPosts = posts.filter(
+    (post) => post.user_id.toString() === userID.toString()
+  );
 
   function logoutButton() {
     dispatch({ type: USER_LOGOUT });
@@ -25,10 +27,10 @@ export default function User(props) {
   }
   useEffect(() => {
     if (!userInfo) {
-      props.history.push("/");
+      props.history.push("/campk12");
     }
     return () => {
-      props.history.push("/");
+      props.history.push("/campk12");
     };
   }, [userInfo, props]);
   return (

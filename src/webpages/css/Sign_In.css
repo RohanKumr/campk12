@@ -1,7 +1,7 @@
 .Sign-in-container {
   overflow: scroll;
   display: flex;
-  height: 100%;
+  height: 100vh;
   justify-content: center;
   align-items: center;
   font-weight: normal;
@@ -12,10 +12,12 @@
   color: var(--dark-blue-grey);
 }
 .Sign-in-box {
+  height: 772px;
+  max-height: 772px;
   border: 1px var(--dark-blue-grey) solid;
   padding: 32px;
   width: 375px;
-  height: 772px;
+  max-width: 375px;
   background-image: linear-gradient(to bottom, #ffffff, #f1f4fa);
 }
 .sign-in {

@@ -97,7 +97,7 @@ export default function Feeds(props) {
 
   useEffect(() => {
     if (!userInfo) {
-      props.history.push("/");
+      props.history.push("/campk12");
     }
     return () => {};
   }, [userInfo, props]);
@@ -179,9 +179,20 @@ export default function Feeds(props) {
                         {post.name}
                       </div>
                       <div className="user-addon-info-box">
-                        <div className="user-addon-icon"></div>
+                        <img
+                          alt=""
+                          className="user-addon-icon"
+                          src={greenIcon}
+                        />
                         <div className="user-addon-info">100</div>
-                        <div className="user-addon-icon-2"></div>
+                        <div className="Oval-cont">
+                          <div className="Oval"></div>
+                        </div>
+                        <img
+                          alt=""
+                          className="user-addon-icon"
+                          src={coinIcon}
+                        />
                         <div className="user-addon-info">340</div>
                       </div>
                     </div>

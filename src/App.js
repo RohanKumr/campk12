@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/" component={SignIn} exact />
+          <Route path="/campk12" component={SignIn} exact />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/feeds" component={Feeds} />
           <Route path="/feed/:feedId" component={Feed} />

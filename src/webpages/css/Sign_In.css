@@ -1,5 +1,5 @@
 .Sign-in-container {
-  overflow: scroll;
+  overflow: auto;
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -11,7 +11,9 @@
   letter-spacing: normal;
   color: var(--dark-blue-grey);
 }
+
 .Sign-in-box {
+  box-sizing: border-box;
   height: 772px;
   max-height: 772px;
   border: 1px var(--dark-blue-grey) solid;
@@ -83,6 +85,21 @@
   text-align: center;
   color: #838383;
   background-color: #ffcece;
+}
+.incorrect-password-dummy {
+  margin: 32px -32px 0 -32px;
+  width: auto;
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.02px;
+  text-align: center;
+  color: #838383;
+  background-color: transparent;
 }
 .sign-in-button {
   margin: auto;

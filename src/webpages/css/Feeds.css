@@ -14,14 +14,15 @@
   color: var(--dark-blue-grey);
 }
 .Feeds-box {
+  box-sizing: border-box;
   overflow: auto;
   border: 1px var(--dark-blue-grey) solid;
   padding: 16px;
   width: 375px;
+  max-width: 375px;
   height: 772px;
   background: #f1f4fa;
 }
-
 .react-tenor--search-bar input {
   font-weight: normal;
   font-stretch: normal;
@@ -30,12 +31,16 @@
   align-items: center;
   letter-spacing: normal;
   font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--dark-blue-grey);
   padding: 16px;
   outline: none;
   border: none;
+}
+.react-tenor--result {
+}
+.react-tenor--result span {
 }
 .blue-background {
   margin: -16px -16px 0px -16px;
@@ -53,15 +58,17 @@
   color: #ffffff;
 }
 .write-feed-here {
-  font-size: 16px;
+  font-size: 14px;
+  box-sizing: 141px;
+  min-height: 100px;
+  padding: 0px;
+  height: 100%;
   font-family: Montserrat;
   line-height: 1.57;
   letter-spacing: normal;
   color: rgba(31, 42, 85, 0.7);
   font-weight: 500;
-  min-height: 110px;
   overflow: auto;
-  height: 100%;
   width: 100%;
   max-width: 100%;
   resize: none;
@@ -76,14 +83,14 @@
   float: right;
   padding-top: 2px;
   font-family: Montserrat;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 2px;
   color: #ffffff;
   cursor: pointer;
 }
 .post-container {
-  min-height: 160px;
+  min-height: 100px;
   margin: auto;
   margin-top: -90px;
   margin-bottom: 34px;
@@ -98,9 +105,9 @@
 }
 .post-textarea {
   box-sizing: border-box;
-  padding: 20px;
+  padding: 16px;
   width: 100%;
-  min-height: 160px;
+  min-height: 141px;
   height: 100%;
   border-radius: 12px;
   font-size: 16px;
@@ -112,12 +119,10 @@
 }
 .feeds-post-button {
   float: right;
-  margin: 15px 10px 20px auto;
-  height: 16px;
-  padding: 10px;
-  width: 80px;
+  margin: 20px 10px 0px auto;
+  padding: 7px 12px;
   font-family: Montserrat;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
@@ -126,16 +131,17 @@
   background-color: #2a69ee;
   cursor: pointer;
 }
+
 .emoji-button,
 .gif-button {
   float: left;
-  margin: 15px 10px 20px auto;
+  margin: 20px 10px 0px auto;
   height: 16px;
-  padding: 10px;
+  padding: 7px 12px;
   display: flex;
   align-items: center;
   font-family: Montserrat;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
@@ -143,6 +149,9 @@
   border-radius: 5px;
   background-color: #2a69ee;
   cursor: pointer;
+}
+.emoji-button {
+  margin-left: 10px;
 }
 
 .feeds {
@@ -262,7 +271,7 @@
 .feeds-text {
   margin-top: 16px;
   font-family: Montserrat;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.57;
   letter-spacing: normal;
   color: rgba(31, 42, 85, 0.7);

@@ -9,7 +9,8 @@ export default function NotFound() {
         <div className="blue-background">
           <div className="your-feeds">404 NOT FOUND</div>
           <div className="your-feeds">
-            <Link to="/">Return</Link>
+            Go To<span></span>
+            <Link to="/campk12"> Sign In</Link>
           </div>
         </div>
       </div>

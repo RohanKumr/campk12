@@ -3,9 +3,6 @@ import thunk from "redux-thunk";
 import { userListReducer } from "./reducers/userListReducer";
 import { userLoginReducer } from "./reducers/userLoginReducer";
 import { postsListReducer } from "./reducers/postsListReducer";
-// import data from "./data";
-// import { Cookie } from "js-cookie";
-// const userInfo = Cookie.getJSON("userInfo") || null;
 
 const initialState = {};
 const reducer = combineReducers({

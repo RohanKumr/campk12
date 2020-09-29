@@ -49,7 +49,10 @@ export default function SignUp(props) {
         (existingUser) => existingUser.email === user.email
       );
       if (existingUser) {
-        setError("Oops User Exists");
+        setError(
+          "Oops, account with this email already exists! Try again with different email"
+        );
+        setValidateUser(false);
       } else {
         dispatch(userActions(user));
         props.history.push("/campk12");
@@ -99,7 +102,11 @@ export default function SignUp(props) {
           name="name"
           onChange={changeHandler}
         />
-        {validateUser ? null : <div className="account-exists">{error}</div>}
+        {validateUser ? (
+          <div className="account-exists-dummy"></div>
+        ) : (
+          <div className="account-exists">{error}</div>
+        )}
         <button
           className={buttonGrey ? "signup-button-grey" : "signup-button"}
           onClick={verifySignInDetails}

@@ -76,7 +76,9 @@ export default function SignIn(props) {
           onChange={changeHandler}
         />
         <div className="forgot-password">Forgot Password?</div>
-        {validateUser ? null : (
+        {validateUser ? (
+          <div className="incorrect-password-dummy"></div>
+        ) : (
           <div className="incorrect-password">{error}</div>
         )}
         <div className="sign-in-button" onClick={verifySignInDetails}>

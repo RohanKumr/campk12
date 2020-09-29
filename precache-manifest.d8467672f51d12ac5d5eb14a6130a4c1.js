@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "25c121b0ef34b1f17aaa1559a26f4519",
+    "revision": "2176b5100494b9026013214719de911e",
     "url": "/campk12/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/campk12/static/css/2.d8c3f0bf.chunk.css"
   },
   {
-    "revision": "b793d1ca5918a329720d",
+    "revision": "c24a509d540dbdeadd65",
     "url": "/campk12/static/css/main.8fcc7378.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/campk12/static/js/2.48f86a6a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b793d1ca5918a329720d",
-    "url": "/campk12/static/js/main.bd0f99d1.chunk.js"
+    "revision": "c24a509d540dbdeadd65",
+    "url": "/campk12/static/js/main.d9dc8688.chunk.js"
   },
   {
     "revision": "6323c128c90c38ea9f22",

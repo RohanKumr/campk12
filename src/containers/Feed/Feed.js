@@ -1,10 +1,11 @@
-import "./css/Feed.css";
+import "./Feed.css";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { USER_LOGOUT } from "../constants/userLoginConstants";
-import img from "./img/path-3.png";
-import greenIcon from "./img/group-5.png";
-import coinIcon from "./img/coin@3x.png";
+import { USER_LOGOUT } from "../../constants/userLoginConstants";
+import img from "../../img/path-3.png";
+import greenIcon from "../../img/group-5.png";
+import coinIcon from "../../img/coin@3x.png";
+import { Header } from "../../components/Header";
 
 export default function Feed(props) {
   const posts = useSelector((state) => state.postsList.posts);
@@ -28,10 +29,6 @@ export default function Feed(props) {
     dispatch({ type: USER_LOGOUT });
   }
 
-  function back() {
-    props.history.push("/feeds");
-  }
-
   //USER ID PASSED HERE
   function gotoUser() {
     props.history.push("/user/" + post.user_id);
@@ -40,17 +37,14 @@ export default function Feed(props) {
   return (
     <div className="Feeds-container">
       <div className="Feeds-box">
-        <div className="blue-background">
-          <div className="your-feeds">
-            <div className="feed-item-box">
-              <img alt="" onClick={back} className="Path-3" src={img} />
-              <div>Feed Item</div>
-            </div>
-            <span className="feeds-logout" onClick={logoutButton}>
-              LOGOUT
-            </span>
-          </div>
-        </div>
+        <Header
+          backButton={true}
+          text="Feed"
+          onClick={() => {
+            logoutButton();
+          }}
+        />
+
         <div onClick={gotoUser} className="feed-container">
           <div className="feed">
             <div className="feeds-user-info-box">

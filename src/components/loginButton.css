@@ -1,0 +1,23 @@
+.sign-in-button {
+  margin: auto;
+  display: flex;
+  font: uppercase;
+  align-items: center;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 12px 52px;
+  margin-top: 28px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  background-color: #2665ee;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2.46px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.sign-in-button:hover {
+  opacity: 0.96;
+}

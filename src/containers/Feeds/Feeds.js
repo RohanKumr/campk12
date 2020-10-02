@@ -1,15 +1,17 @@
-import "./css/Feeds.css";
+import "./Feeds.css";
 import "emoji-mart/css/emoji-mart.css";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { USER_LOGOUT } from "../constants/userLoginConstants";
-import { addPost } from "../actions/postActions";
+import { USER_LOGOUT } from "../../constants/userLoginConstants";
+import { addPost } from "../../actions/postActions";
 import { Picker } from "emoji-mart";
 import "react-tenor/dist/styles.css";
 import Tenor from "react-tenor";
-import usePostSearch from "./customHooks/usePostSearch";
-import greenIcon from "./img/group-5.png";
-import coinIcon from "./img/coin@3x.png";
+import usePostSearch from "../../customHooks/usePostSearch";
+import greenIcon from "../../img/group-5@3x.png";
+import coinIcon from "../../img/coin@3x.png";
+import { Header } from "../../components/Header";
+import { MultipleFeeds } from "../../components/multipleFeeds";
 
 export default function Feeds(props) {
   const [newPost, setNewPost] = useState("");
@@ -17,9 +19,8 @@ export default function Feeds(props) {
   const [gifPicker, setGifPicker] = useState(false);
   const [gif, setGif] = useState(null);
 
-  const [query] = useState("");
   const [pageNumber, setPageNumber] = useState(10);
-  const { posts, hasMore, loading } = usePostSearch(query, pageNumber);
+  const { posts, loading } = usePostSearch(pageNumber);
 
   const observer = useRef();
 
@@ -85,14 +86,15 @@ export default function Feeds(props) {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((enteries) => {
-        if (enteries[0].isIntersecting && hasMore) {
+        //node we are observing
+        if (enteries[0].isIntersecting) {
           // console.log("Visible");
-          setPageNumber((prevPageNumber) => prevPageNumber + pageNumber);
+          setPageNumber((prevPageNumber) => prevPageNumber + 5);
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore, pageNumber]
+    [loading]
   );
 
   useEffect(() => {
@@ -105,14 +107,11 @@ export default function Feeds(props) {
   return (
     <div className="Feeds-container">
       <div className="Feeds-box">
-        <div className="blue-background">
-          <div className="feeds-item-box">
-            <div className="your-feeds">Your Feed</div>
-            <div className="feeds-logout" onClick={logoutButton}>
-              LOGOUT
-            </div>
-          </div>
-        </div>
+        <Header
+          backButton={false}
+          text="Your Feed"
+          onClick={() => logoutButton()}
+        />
 
         <div className="post-container">
           <div
@@ -124,7 +123,6 @@ export default function Feeds(props) {
               className="write-feed-here"
               value={newPost}
               placeholder="Write a post..."
-              onClick={() => setNewPost("")}
               onChange={getPost}>
               {newPost}
             </textarea>
@@ -156,6 +154,7 @@ export default function Feeds(props) {
           />
         ) : null}
         {/* FEEDS STARTS HEREE */}
+        {/* <MultipleFeeds posts={posts} postsLength={posts.length} /> */}
         {posts.map((post, index) => {
           if (posts.length === index + 1) {
             return (

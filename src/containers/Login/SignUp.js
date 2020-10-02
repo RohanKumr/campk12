@@ -1,9 +1,9 @@
-import "./css/Sign_Up.css";
+import "./SignUp.css";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userActions } from "../actions/userActions";
+import { userActions } from "../../actions/userActions";
 import { Link } from "react-router-dom";
-import hiddenPass from "./img/password-hidden@3x.png";
+import hiddenPass from "../../img/password-hidden@3x.png";
 
 export default function SignUp(props) {
   const [user, setUser] = useState({});

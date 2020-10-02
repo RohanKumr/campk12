@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { USER_LOGOUT } from "../constants/userLoginConstants";
-import img from "./img/path-3.png";
-import "./css/profile.css";
-import greenIcon from "./img/group-5.png";
-import coinIcon from "./img/coin@3x.png";
+import { USER_LOGOUT } from "../../constants/userLoginConstants";
+import img from "../../img/path-3.png";
+import "./profile.css";
+import greenIcon from "../../img/group-5@3x.png";
+import coinIcon from "../../img/coin@3x.png";
+import { Header } from "../../components/Header";
 
 export default function User(props) {
   let userID = props.match.params.userId;
@@ -18,10 +19,11 @@ export default function User(props) {
   function logoutButton() {
     dispatch({ type: USER_LOGOUT });
   }
+
+  //Logged in User
   const { userInfo } = useSelector(
     (state) => state.userLoginDetails.LoggedInUser
   );
-
   function back() {
     props.history.push("/feeds");
   }
@@ -29,26 +31,19 @@ export default function User(props) {
     if (!userInfo) {
       props.history.push("/campk12");
     }
-    return () => {
-      props.history.push("/campk12");
-    };
+
+    return () => {};
   }, [userInfo, props]);
   return (
     <div className="Feeds-container">
       <div className="Feeds-box">
-        <div className="blue-background">
-          <div className="your-feeds">
-            <div className="feed-item-box">
-              <img alt="" onClick={back} className="Path-3" src={img} />
-              <div>Profile</div>
-            </div>
-            <span className="feeds-logout" onClick={logoutButton}>
-              LOGOUT
-            </span>
-          </div>
-        </div>
+        <Header
+          backButton={true}
+          text="Profile"
+          onClick={() => logoutButton()}
+        />
         <div className="profile-container">
-          {currentUserPosts[0].image ? (
+          {currentUserPosts[0] && currentUserPosts[0].image ? (
             <img
               alt=""
               src={currentUserPosts[0].image}
@@ -57,7 +52,9 @@ export default function User(props) {
           ) : (
             <div className="main-profile-photo"></div>
           )}
-          <div className="main-profile-name">{currentUserPosts[0].name}</div>
+          <div className="main-profile-name">
+            {currentUserPosts[0] && currentUserPosts[0].name}
+          </div>
           <div className="user-addon-info-box">
             <img alt="" className="user-addon-icon" src={greenIcon} />
             <div className="user-addon-info">100</div>
@@ -73,7 +70,7 @@ export default function User(props) {
         {currentUserPosts.map((post) => (
           <div key={post.id} className="feeds">
             <div className="feeds-user-info-box">
-              {currentUserPosts[0].image ? (
+              {currentUserPosts[0] && currentUserPosts[0].image ? (
                 <img
                   alt=""
                   src={currentUserPosts[0].image}

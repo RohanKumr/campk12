@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import { userListReducer } from "./reducers/userListReducer";
-import { userLoginReducer } from "./reducers/userLoginReducer";
-import { postsListReducer } from "./reducers/postsListReducer";
+import { userListReducer } from "../reducers/userListReducer";
+import { userLoginReducer } from "../reducers/userLoginReducer";
+import { postsListReducer } from "../reducers/postsListReducer";
 
 const initialState = {};
 const reducer = combineReducers({

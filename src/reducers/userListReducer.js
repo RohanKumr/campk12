@@ -1,5 +1,5 @@
 import { ADD_USER } from "../constants/userListConstants";
-import data from "../data";
+import data from "../store/data";
 import { v4 as uuidv4 } from "uuid";
 
 function userListReducer(state = { users: data.users }, action) {

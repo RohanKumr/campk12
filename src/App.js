@@ -1,15 +1,14 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignIn from "./webpages/SignIn";
-import SignUp from "./webpages/SignUp";
-import Feeds from "./webpages/Feeds";
-import Feed from "./webpages/Feed";
+import SignIn from "./containers/Login/SignIn";
+import SignUp from "./containers/Login/SignUp";
+import Feeds from "./containers/Feeds/Feeds";
+import Feed from "./containers/Feed/Feed";
+import User from "./containers/Profile/User";
+import NotFound from "./containers/404Error/NotFound";
 
-import User from "./webpages/User";
-import NotFound from "./webpages/NotFound";
-
-function App() {
+function App(props) {
   return (
     <div className="App">
       <Router>

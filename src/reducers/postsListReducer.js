@@ -1,5 +1,5 @@
 import { ADD_POST } from "../constants/postsConstants";
-import data from "../data";
+import data from "../store/data";
 import { v4 as uuidv4 } from "uuid";
 
 function postsListReducer(state = { posts: data.posts }, action) {
@@ -13,8 +13,8 @@ function postsListReducer(state = { posts: data.posts }, action) {
         gif: action.payload.gifUrl,
         image: action.payload.image,
       };
-
       return { ...state, posts: [newPost, ...state.posts] };
+
     default:
       return state;
   }

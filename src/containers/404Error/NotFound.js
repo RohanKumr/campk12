@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./css/Feeds.css";
+import "../Feeds/Feeds.css";
 
-export default function NotFound() {
+function NotFound() {
   return (
     <div className="Feeds-container">
       <div className="Feeds-box">
@@ -17,3 +17,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+export default NotFound;

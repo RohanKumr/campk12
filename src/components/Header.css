@@ -13,3 +13,30 @@
   font-weight: 600;
   color: #ffffff;
 }
+.feeds-logout {
+  float: right;
+  padding-top: 2px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.your-feeds {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.feed-item-box {
+  display: flex;
+  align-items: center;
+}
+.Path-3 {
+  margin-right: 23px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  cursor: pointer;
+}

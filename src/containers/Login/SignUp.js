@@ -2,8 +2,12 @@ import "./SignUp.css";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userActions } from "../../actions/userActions";
-import { Link } from "react-router-dom";
 import hiddenPass from "../../img/password-hidden@3x.png";
+import { LoginText } from "../../components/LoginText";
+import { LoginFooter } from "../../components/LoginFooter";
+import { LoginInput } from "../../components/LoginInput";
+import { LoginPasswordEye } from "../../components/LoginPasswordEye";
+import { LoginButton } from "../../components/loginButton";
 
 export default function SignUp(props) {
   const [user, setUser] = useState({});
@@ -67,36 +71,30 @@ export default function SignUp(props) {
   return (
     <div className="Sign-up-container">
       <div className="Sign-up-box">
-        <div className="sign-up">Sign up</div>
-        <div className="welcome-back">Create Account for Camp K12</div>
-        <input
+        <LoginText heading="Sign Up" subText="Create Account for Camp K12" />
+        <LoginInput
           className="input-without-image"
           placeholder="Email"
           name="email"
           onChange={changeHandler}
         />
-
-        <div className="input-with-image">
-          <input
-            type={showPass ? "text" : "password"}
-            placeholder="Password"
-            name="password"
-            onChange={changeHandler}
-          />
-          <img alt="" onClick={showPassword} src={hiddenPass} />
-        </div>
-
-        <div className="input-with-image">
-          <input
-            type={showPass ? "text" : "password"}
-            placeholder="Confirm Password"
-            name="confirmPassword"
-            onChange={changeHandler}
-          />
-          <img alt="" onClick={showPassword} src={hiddenPass} />
-        </div>
-
-        <input
+        <LoginPasswordEye
+          type={showPass ? "text" : "password"}
+          placeholder="Password"
+          name="password"
+          onChange={changeHandler}
+          onClick={showPassword}
+          src={hiddenPass}
+        />
+        <LoginPasswordEye
+          type={showPass ? "text" : "password"}
+          placeholder="Confirm Password"
+          name="confirmPassword"
+          onChange={changeHandler}
+          onClick={showPassword}
+          src={hiddenPass}
+        />
+        <LoginInput
           className="input-without-image"
           placeholder="Full Name"
           name="name"
@@ -107,15 +105,17 @@ export default function SignUp(props) {
         ) : (
           <div className="account-exists">{error}</div>
         )}
-        <button
-          className={buttonGrey ? "signup-button-grey" : "signup-button"}
+        <LoginButton
+          class={buttonGrey ? "signup-button-grey" : ""}
+          status={buttonGrey}
           onClick={verifySignInDetails}
-          disabled={buttonGrey}>
-          SIGN UP
-        </button>
-        <div className="dont-have-an-acc">
-          Already have an account? <Link to="/campk12">Sign In</Link>
-        </div>
+          text="Sign Up"
+        />
+        <LoginFooter
+          text="Already have an account? "
+          toPath="/campk12"
+          toText="Sign in"
+        />
       </div>
     </div>
   );

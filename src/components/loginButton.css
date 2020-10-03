@@ -21,3 +21,20 @@
 .sign-in-button:hover {
   opacity: 0.96;
 }
+.signup-button-grey {
+  outline: none;
+  border: transparent;
+  display: block;
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  padding: 12px 52px;
+  margin-top: 28px;
+  border-radius: 20px;
+  background-color: #cccccc;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2.46px;
+  color: #ffffff;
+}

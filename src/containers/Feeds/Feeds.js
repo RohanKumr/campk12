@@ -8,10 +8,10 @@ import { Picker } from "emoji-mart";
 import "react-tenor/dist/styles.css";
 import Tenor from "react-tenor";
 import usePostSearch from "../../customHooks/usePostSearch";
-import greenIcon from "../../img/group-5@3x.png";
-import coinIcon from "../../img/coin@3x.png";
+// import greenIcon from "../../img/group-5@3x.png";
+// import coinIcon from "../../img/coin@3x.png";
 import { Header } from "../../components/Header";
-import { MultipleFeeds } from "../../components/multipleFeeds";
+import { Feed } from "../../components/Feed";
 
 export default function Feeds(props) {
   const [newPost, setNewPost] = useState("");
@@ -77,9 +77,9 @@ export default function Feeds(props) {
     setGif(selectedGif);
   }
 
-  function gotoUser(user_id) {
-    props.history.push("/user/" + user_id);
-  }
+  // function gotoUser(user_id) {
+  //   props.history.push("/user/" + user_id);
+  // }
 
   const lastElementRef = useCallback(
     (node) => {
@@ -154,97 +154,20 @@ export default function Feeds(props) {
           />
         ) : null}
         {/* FEEDS STARTS HEREE */}
-        {/* <MultipleFeeds posts={posts} postsLength={posts.length} /> */}
         {posts.map((post, index) => {
           if (posts.length === index + 1) {
             return (
-              <div
+              <Feed
+                setRef={true}
                 key={post.id}
-                ref={lastElementRef}
-                className="feeds"
-                onClick={() => gotoFeed(post.id)}>
-                <div className="feeds-user-info-box">
-                  {post.image ? (
-                    <img alt="" src={post.image} className="user-image" />
-                  ) : (
-                    <div className="profile-image"></div>
-                  )}
-
-                  <div className="feeds-user-info-box-right">
-                    <div>
-                      <div
-                        onClick={() => gotoUser(post.user_id)}
-                        className="user-name">
-                        {post.name}
-                      </div>
-                      <div className="user-addon-info-box">
-                        <img
-                          alt=""
-                          className="user-addon-icon"
-                          src={greenIcon}
-                        />
-                        <div className="user-addon-info">100</div>
-                        <div className="Oval-cont">
-                          <div className="Oval"></div>
-                        </div>
-                        <img
-                          alt=""
-                          className="user-addon-icon"
-                          src={coinIcon}
-                        />
-                        <div className="user-addon-info">340</div>
-                      </div>
-                    </div>
-                    <div className="post-time">5h</div>
-                  </div>
-                </div>
-                <div className="feeds-text">{post.post}</div>
-                <div>
-                  {post.gif && (
-                    <img className="gif-image" src={post.gif} alt="" />
-                  )}
-                </div>
-              </div>
+                forwardRef={lastElementRef}
+                onClick={() => gotoFeed(post.id)}
+                post={post}
+              />
             );
           }
           return (
-            <div
-              key={post.id}
-              className="feeds"
-              onClick={() => gotoFeed(post.id)}>
-              <div className="feeds-user-info-box">
-                {post.image ? (
-                  <img alt="" src={post.image} className="user-image" />
-                ) : (
-                  <div className="profile-image"></div>
-                )}
-                <div className="feeds-user-info-box-right">
-                  <div>
-                    <div
-                      onClick={() => gotoUser(post.user_id)}
-                      className="user-name">
-                      {post.name}
-                    </div>
-                    <div className="user-addon-info-box">
-                      <img alt="" className="user-addon-icon" src={greenIcon} />
-                      <div className="user-addon-info">100</div>
-                      <div className="Oval-cont">
-                        <div className="Oval"></div>
-                      </div>
-                      <img alt="" className="user-addon-icon" src={coinIcon} />
-                      <div className="user-addon-info">340</div>
-                    </div>
-                  </div>
-                  <div className="post-time">5h</div>
-                </div>
-              </div>
-              <div className="feeds-text">{post.post}</div>
-              <div>
-                {post.gif && (
-                  <img className="gif-image" src={post.gif} alt="" />
-                )}
-              </div>
-            </div>
+            <Feed key={post.id} onClick={() => gotoFeed(post.id)} post={post} />
           );
         })}
         <div>{loading && "Loading..."}</div>

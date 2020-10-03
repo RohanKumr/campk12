@@ -6,7 +6,7 @@ import SignUp from "./containers/Login/SignUp";
 import Feeds from "./containers/Feeds/Feeds";
 import Feed from "./containers/Feed/Feed";
 import User from "./containers/Profile/User";
-import NotFound from "./containers/404Error/NotFound";
+import NotFound from "./components/404Error/NotFound";
 
 function App(props) {
   return (

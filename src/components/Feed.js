@@ -1,31 +1,26 @@
 import React from "react";
 import greenIcon from "../img/group-5.png";
 import coinIcon from "../img/coin@3x.png";
+import "./Feed.css";
 
-export const MultipleFeeds = (props) => {
+export const Feed = (props) => {
   const { post } = props;
   return (
     <>
       <div
-        key={props.post.id}
-        ref={props.lastElementRef}
+        key={post.id}
+        ref={props.setRef ? props.forwardRef : null}
         className="feeds"
-        // onClick={() => gotoFeed(post.id)}
-      >
+        onClick={() => props.onClick(post.id)}>
         <div className="feeds-user-info-box">
           {post.image ? (
             <img alt="" src={post.image} className="user-image" />
           ) : (
             <div className="profile-image"></div>
           )}
-
           <div className="feeds-user-info-box-right">
             <div>
-              <div
-                //   onClick={() => gotoUser(post.user_id)}
-                className="user-name">
-                {post.name}
-              </div>
+              <div className="feed-name">{post.name}</div>
               <div className="user-addon-info-box">
                 <img alt="" className="user-addon-icon" src={greenIcon} />
                 <div className="user-addon-info">100</div>

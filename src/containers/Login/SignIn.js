@@ -1,9 +1,11 @@
 import React from "react";
 import "./SignIn.css";
-import { Link } from "react-router-dom";
 import { signin } from "../../actions/userLoginActions";
 import { connect } from "react-redux";
 import { LoginButton } from "../../components/loginButton";
+import { LoginText } from "../../components/LoginText";
+import { LoginFooter } from "../../components/LoginFooter";
+import { LoginInput } from "../../components/LoginInput";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -24,6 +26,7 @@ class SignIn extends React.Component {
   };
 
   changeHandler = (event) => {
+    console.log(event.target.value);
     const { email, password } = this.state;
     this.setState({ [event.target.name]: event.target.value });
     if (email && !email.includes("@")) {
@@ -80,18 +83,17 @@ class SignIn extends React.Component {
     return (
       <div className="Sign-in-container">
         <div className="Sign-in-box">
-          <div className="sign-in">Sign in</div>
-          <div className="welcome-back">Welcome back</div>
-          <input
-            placeholder="Email"
+          <LoginText heading="Sign In" subText="Welcome back" />
+          <LoginInput
             name="email"
+            placeholder="Email"
             onChange={this.changeHandler}
           />
 
-          <input
-            placeholder="Password"
+          <LoginInput
             name="password"
             type="password"
+            placeholder="Password"
             onKeyPress={this.keyPress}
             onChange={this.changeHandler}
           />
@@ -106,9 +108,11 @@ class SignIn extends React.Component {
             onClick={() => this.verifySignInDetails()}
             text="Sign In"
           />
-          <div className="dont-have-an-acc">
-            Don’t have an account? <Link to="/sign-up">Sign up</Link>
-          </div>
+          <LoginFooter
+            text="Don’t have an account? "
+            toPath="/sign-up"
+            toText="Sign up"
+          />
         </div>
       </div>
     );

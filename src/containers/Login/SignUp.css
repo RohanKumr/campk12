@@ -21,62 +21,7 @@
   max-height: 772px;
   background-image: linear-gradient(to bottom, #ffffff, #f1f4fa);
 }
-.sign-up {
-  height: 29px;
-  font-family: Montserrat;
-  font-size: 24px;
-  font-weight: 600;
-}
-.welcome-back {
-  margin-top: 8px;
-  margin-bottom: 44px;
-  height: 19px;
-  opacity: 0.7;
-  font-family: Montserrat;
-  font-size: 16px;
-  color: var(--dark-blue-grey);
-}
-.input-without-image {
-  background: transparent;
-  box-sizing: border-box;
-  width: 100%;
-  height: 2rem;
-  margin-bottom: 30px;
-  padding: 20px 0 20px 0;
-  border: none;
-  border-bottom: 1px grey solid;
-  opacity: 0.9;
-  font-family: Montserrat;
-  font-size: 16px;
-  color: var(--dark-blue-grey);
-}
-.input-with-image {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px grey solid;
-  opacity: 0.9;
-  font-family: Montserrat;
-  font-size: 16px;
-  color: var(--dark-blue-grey);
-}
-.input-with-image input {
-  background: transparent;
-  padding: 20px 0 20px 0;
-  box-sizing: border-box;
-  width: 100%;
-  height: 2rem;
-  border: none;
-  font-family: Montserrat;
-  font-size: 16px;
-}
-.input-with-image img {
-  height: 10px;
-  cursor: pointer;
-  color: var(--dark-blue-grey);
-}
+
 .forgot-password {
   font-family: Montserrat;
   font-size: 12px;
@@ -112,47 +57,6 @@
   text-align: center;
   color: #838383;
   background-color: transparent;
-  /* background-color: #ffcece; */
-}
-.signup-button {
-  display: block;
-  border: transparent;
-  margin: auto;
-  width: fit-content;
-  text-align: center;
-  padding: 11px 50px;
-  margin-top: 28px;
-  border-radius: 20px;
-  background-color: #2665ee;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 2.46px;
-  color: #ffffff;
-  cursor: pointer;
-}
-.signup-button:hover {
-  opacity: 0.96;
-}
-.signup-button:focus {
-  outline: none;
-}
-.signup-button-grey {
-  outline: none;
-  border: transparent;
-  display: block;
-  margin: auto;
-  width: fit-content;
-  text-align: center;
-  padding: 12px 52px;
-  margin-top: 28px;
-  border-radius: 20px;
-  background-color: #cccccc;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 2.46px;
-  color: #ffffff;
 }
 .dont-have-an-acc {
   margin-top: 100px;
@@ -164,9 +68,4 @@
 .dont-have-an-acc span {
   font-weight: 600;
   color: #177cf4;
-}
-.input-pass {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px grey solid;
 }

@@ -1,0 +1,15 @@
+.login-heading {
+  height: 29px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+}
+.login-sub-text {
+  margin-top: 8px;
+  margin-bottom: 44px;
+  height: 19px;
+  opacity: 0.7;
+  font-family: Montserrat;
+  font-size: 16px;
+  color: var(--dark-blue-grey);
+}

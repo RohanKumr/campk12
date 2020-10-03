@@ -8,6 +8,7 @@ import { LoginFooter } from "../../components/LoginFooter";
 import { LoginInput } from "../../components/LoginInput";
 import { LoginPasswordEye } from "../../components/LoginPasswordEye";
 import { LoginButton } from "../../components/loginButton";
+import { LoginError } from "../../components/LoginError";
 
 export default function SignUp(props) {
   const [user, setUser] = useState({});
@@ -100,11 +101,11 @@ export default function SignUp(props) {
           name="name"
           onChange={changeHandler}
         />
-        {validateUser ? (
-          <div className="account-exists-dummy"></div>
-        ) : (
-          <div className="account-exists">{error}</div>
-        )}
+        <LoginError
+          validateUser={validateUser}
+          showForgotPassword={false}
+          error={error}
+        />
         <LoginButton
           class={buttonGrey ? "signup-button-grey" : ""}
           status={buttonGrey}

@@ -1,0 +1,78 @@
+.forgot-password {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark-blue-grey);
+}
+.incorrect-password {
+  margin: 32px -32px 0 -32px;
+  width: auto;
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.02px;
+  text-align: center;
+  color: #838383;
+  background-color: #ffcece;
+}
+.incorrect-password-dummy {
+  margin: 32px -32px 0 -32px;
+  width: auto;
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.02px;
+  text-align: center;
+  color: #838383;
+  background-color: transparent;
+}
+
+.account-exists {
+  margin: 32px -32px 0 -32px;
+  width: auto;
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 25px 60px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.02px;
+  text-align: center;
+  color: #838383;
+  background-color: #ffcece;
+}
+.account-exists-dummy {
+  margin: 0px -32px 0 -32px;
+  width: auto;
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 18px 60px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.02px;
+  text-align: center;
+  color: #838383;
+  background-color: transparent;
+}
+.dont-have-an-acc {
+  margin-top: 100px;
+  font-family: Montserrat;
+  font-size: 16px;
+  text-align: center;
+  color: var(--dark-blue-grey);
+}
+.dont-have-an-acc span {
+  font-weight: 600;
+  color: #177cf4;
+}

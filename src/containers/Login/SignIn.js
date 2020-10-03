@@ -6,6 +6,7 @@ import { LoginButton } from "../../components/loginButton";
 import { LoginText } from "../../components/LoginText";
 import { LoginFooter } from "../../components/LoginFooter";
 import { LoginInput } from "../../components/LoginInput";
+import { LoginError } from "../../components/LoginError";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -26,7 +27,6 @@ class SignIn extends React.Component {
   };
 
   changeHandler = (event) => {
-    console.log(event.target.value);
     const { email, password } = this.state;
     this.setState({ [event.target.name]: event.target.value });
     if (email && !email.includes("@")) {
@@ -63,7 +63,6 @@ class SignIn extends React.Component {
       this.props.whenSignedIn(existingUser);
       this.props.history.push("/feeds/" + existingUser._id);
     } else {
-      console.log(existingUser);
       this.setState({
         validateUser: false,
         error: "Incorrect Username Or Password",
@@ -89,7 +88,6 @@ class SignIn extends React.Component {
             placeholder="Email"
             onChange={this.changeHandler}
           />
-
           <LoginInput
             name="password"
             type="password"
@@ -97,13 +95,11 @@ class SignIn extends React.Component {
             onKeyPress={this.keyPress}
             onChange={this.changeHandler}
           />
-          <div className="forgot-password">Forgot Password?</div>
-          {validateUser ? (
-            <div className="incorrect-password-dummy"></div>
-          ) : (
-            <div className="incorrect-password">{error}</div>
-          )}
-
+          <LoginError
+            showForgotPassword={true}
+            validateUser={validateUser}
+            error={error}
+          />
           <LoginButton
             onClick={() => this.verifySignInDetails()}
             text="Sign In"

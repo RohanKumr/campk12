@@ -1,19 +1,17 @@
-import "./Feeds.css";
+import "./FeedsWrapper.css";
 import "emoji-mart/css/emoji-mart.css";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { USER_LOGOUT } from "../../constants/userLoginConstants";
 import { addPost } from "../../actions/postActions";
-import { Picker } from "emoji-mart";
 import "react-tenor/dist/styles.css";
 import Tenor from "react-tenor";
 import usePostSearch from "../../customHooks/usePostSearch";
-// import greenIcon from "../../img/group-5@3x.png";
-// import coinIcon from "../../img/coin@3x.png";
 import { Header } from "../../components/Header";
 import { Feed } from "../../components/Feed";
+import { WritePost } from "../../components/WritePost";
 
-export default function Feeds(props) {
+export default function FeedsWrapper(props) {
   const [newPost, setNewPost] = useState("");
   const [emojiPicker, setEmojiPicker] = useState(false);
   const [gifPicker, setGifPicker] = useState(false);
@@ -113,40 +111,17 @@ export default function Feeds(props) {
           onClick={() => logoutButton()}
         />
 
-        <div className="post-container">
-          <div
-            className="post-textarea"
-            // contentEditable="true"
-          >
-            {gif && <img alt="" src={gif.media[0].tinygif.url} />}
-            <textarea
-              className="write-feed-here"
-              value={newPost}
-              placeholder="Write a post..."
-              onChange={getPost}>
-              {newPost}
-            </textarea>
-          </div>
-          <div className="feeds-post-button" onClick={savePost}>
-            POST
-          </div>
-          <div className="emoji-button" onClick={toggleEmojiPicker}>
-            <span role="img" aria-label="happy-emoji">
-              &#128515;
-            </span>
-          </div>
-          <div className="gif-button" onClick={toggleGifPicker}>
-            GIF
-          </div>
-          {emojiPicker ? (
-            <Picker
-              theme="dark"
-              title="Pick your emoji…"
-              emoji="smile"
-              onSelect={(emoji) => setNewPost(newPost + emoji.native + " ")}
-            />
-          ) : null}
-        </div>
+        <WritePost
+          gif={gif}
+          newPost={newPost}
+          onGetPostChange={getPost}
+          onSavePostClick={savePost}
+          onToggleEmojiPickerClick={toggleEmojiPicker}
+          onToggleGifPicker={toggleGifPicker}
+          emojiPicker={emojiPicker}
+          setNewPost={setNewPost}
+          onSelect={(emoji) => setNewPost(newPost + emoji.native + " ")}
+        />
         {gifPicker ? (
           <Tenor
             token="2565AC6P98OU"

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../containers/Feeds/Feeds.css";
 import "../Header.css";
 function NotFound() {
   return (

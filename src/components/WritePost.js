@@ -1,6 +1,6 @@
 import React from "react";
 import { Picker } from "emoji-mart";
-
+import "./WritePost.css";
 export const WritePost = (props) => {
   const {
     gif,

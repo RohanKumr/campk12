@@ -24,12 +24,6 @@ export default {
       password: "12345",
       image: "https://randomuser.me/api/portraits/men/28.jpg",
     },
-    {
-      _id: 2826892,
-      email: "akanksha@nykaa.com",
-      name: "Akanksha",
-      password: "hello",
-    },
   ],
   posts: [
     {

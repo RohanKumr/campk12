@@ -69,7 +69,7 @@ export default {
       image: "https://randomuser.me/api/portraits/men/28.jpg",
     },
 
-    //REPLICATE FOR PAGINATION
+    //REPLICATE FOR INFINITE SCROLLING
 
     {
       id: uuidv4(),
@@ -85,9 +85,10 @@ export default {
       id: uuidv4(),
       user_id: 236,
       post:
-        "Today I won a car in a competition! This is a sample of a longer post which has been written by a new person to demonstrate that the size of the feed box should be as long as the text",
+        "This is so cool!",
       created_at: "5h",
       name: "Subrai Subaru",
+      gif:"https://media.tenor.com/images/601c7099f24ddf3fa56bfa6596b29390/tenor.gif",
       image:
         "https://cdn.pixabay.com/photo/2020/09/22/18/55/avatar-5594052_960_720.png",
     },

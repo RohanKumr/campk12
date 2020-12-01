@@ -1,5 +1,8 @@
 # Social Media App
- React & Redux
+
+React & Redux
+
+[DEMO](https://rohankumr.github.io/campk12 "Social Media app") 
 
 #### Features:
 * Create users
@@ -11,6 +14,3 @@
 * Individual Feed page
 * User Profile
 * Infinite Loading
-
-
-[DEMO](https://rohankumr.github.io/campk12 "Social Media app")

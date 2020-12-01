@@ -1,15 +1,16 @@
-Social Media App
-React & Redux
+# Social Media App
+ React & Redux
 
-Features:-
-Make users
-Login users
-Form Validation
-Get feeds from all users
-Emoji Support
-Gif Support
-Individual Feed page
-User Profile
-Infinite Loading
+#### Features:
+* Create users
+* Login users
+* Form Validation
+* Get feeds from all users
+* Emoji Support
+* Gif Support
+* Individual Feed page
+* User Profile
+* Infinite Loading
 
-Demo - https://rohankumr.github.io/campk12/
+
+[DEMO](https://rohankumr.github.io/campk12 "Social Media app")

@@ -15,6 +15,6 @@ React & Redux
 * User Profile
 * Infinite Loading
 
-##User profile for testing
+## User profile for testing
 id: nikhilyadav@gmail.com\
 password: 12345

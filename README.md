@@ -14,3 +14,7 @@ React & Redux
 * Individual Feed page
 * User Profile
 * Infinite Loading
+
+
+id: nikhilyadav@gmail.com
+password: 12345

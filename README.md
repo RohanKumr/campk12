@@ -16,5 +16,5 @@ React & Redux
 * Infinite Loading
 
 
-id: nikhilyadav@gmail.com
+id: nikhilyadav@gmail.com\
 password: 12345
